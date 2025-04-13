@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coding for Innovators</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      border-bottom: 2px solid #333;
+    }
+
+    .navbar-brand {
+      color: #00ffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar-links ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar-links ul li a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links ul li a:hover {
+      color: #00ffff;
+    }
+
+    /* Cursor Effects */
+    .cursor {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 10000;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: trailFade 1s forwards;
+    }
+
+    @keyframes trailFade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+
+    /* Main Content Styling */
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    h4 {
+      color: #ffcc00;
+    }
+
+    .content-image {
+      width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffff55;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor"></div>
+
+  <!-- SECTIONS -->
+  <div class="section">
+    <h2>GAME-1 (CHASE GAME)</h2>
+    <img src="./assets/images/g1.png" alt="Game 1" class="content-image" />
+    <p>In this narrative, a panther is depicted as a predator, silently stalking and chasing a horse...</p>
+    <h4>Moral of the Story:</h4>
+    <p>It shows how the balance between two opposing forces can result in an intense pursuit...</p>
+  </div>
+
+  <div class="section">
+    <h2>GAME-2 (CHASE GAME)</h2>
+    <img src="./assets/images/g2.png" alt="Game 2" class="content-image" />
+    <p>In this version, a shark hunts for fishes in the ocean...</p>
+    <h4>Moral of the Story:</h4>
+    <p>It highlights how survival can depend not just on strength but on cleverness...</p>
+  </div>
+
+  <div class="section">
+    <h2>STORY</h2>
+    <img src="./assets/images/story.png" alt="Story" class="content-image" />
+  </div>
+
+  <div class="section">
+    <h2>APPLICATION QR-CODE</h2>
+    <img src="./assets/images/QR.jpg" alt="QR Code" class="content-image" />
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cursor = document.querySelector('.cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        // Move main cursor
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+
+        // Create trail
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.body.appendChild(trail);
+
+        // Remove trail after fading
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

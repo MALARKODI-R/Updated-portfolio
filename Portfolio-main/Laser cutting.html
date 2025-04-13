@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laser Cutting</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      background: linear-gradient(to right, #0c0c0c, #050505);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      border-bottom: 2px solid #333;
+    }
+
+    .navbar-brand {
+      color: #00ffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar-links ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar-links ul li a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links ul li a:hover {
+      color: #00ffff;
+    }
+
+    /* Main Content */
+    .laser {
+      padding: 40px 10%;
+    }
+
+    h1, h2 {
+      color: #00ffff;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    h3 {
+      color: #1fe2e2;
+      margin-top: 25px;
+    }
+
+    h4 {
+      font-weight: 400;
+      line-height: 1.6;
+      color: #d0f9ff;
+    }
+
+    .laser img {
+  display: block;
+  margin: 30px auto;
+  max-width: 50%; /* Reduced size */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+
+    /* Cursor */
+    .cursor {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 10000;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: trailFade 1s forwards;
+    }
+
+    @keyframes trailFade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+  <!-- Main Assignment Content -->
+  <div class="laser">
+    <h1>ASSIGNMENT-1</h1>
+
+    <h2>Introduction</h2>
+    <h4>The design consists of a segmented sphere... (your full content here remains the same)</h4>
+
+    <h2>Step-by-Step Guide to Creating the 3D Model</h2>
+    <h3>1. Start a New Design</h3>
+    <h4>Open Fusion 360 → Click on New Design...</h4>
+
+    <h3>2. Create the Sphere (Main Body)</h3>
+    <h4>Go to Create → Sphere <br> Select the center plane...</h4>
+
+    <h3>3. Segment the Sphere</h3>
+    <h4>Use Modify → Split Body <br> Select the sphere...</h4>
+
+    <h3>4. Extract a Single Segment</h3>
+    <h4>Create a new sketch on one of the cut planes...</h4>
+
+    <h3>5. Mirror or Pattern the Segments</h3>
+    <h4>If symmetry is required, use Create → Mirror...</h4>
+
+    <h3>6. Apply Thickness (if needed)</h3>
+    <h4>Use Modify → Shell to make the segment hollow...</h4>
+
+    <h3>7. Add Refinements</h3>
+    <h4>Use Fillet/Chamfer to smooth the edges...</h4>
+
+    <h2>Step-by-Step Guide to Creating a 2D Drawing with Dimensions</h2>
+    <h3>1. Open the Drawing Workspace</h3>
+    <h4>Click File → New Drawing → From Design...</h4>
+
+    <h3>2. Place Orthographic Views</h3>
+    <h4>Select Front, Top, and Side views...</h4>
+
+    <h3>3. Add Section and Detail Views</h3>
+    <h4>If required, create Section Views to show inner details...</h4>
+
+    <h3>4. Dimensioning the Drawing</h3>
+    <h4>Add overall dimensions: Sphere diameter: 50mm...</h4>
+
+    <h3>5. Save and Export as DXF</h3>
+    <h4>Click File → Export → DXF...</h4>
+
+    <h2>Common Challenges and Solutions</h2>
+    <h3>Misalignment of cutting planes...</h3>
+
+    <img src="/assets/images/fusion.png" alt="Fusion" />
+    <img src="/assets/images/dxf.png" alt="DXF Image" />
+  </div>
+
+  <!-- Cursor Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cursor = document.querySelector('.cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects</title>
+
+  <!-- Bootstrap & FontAwesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    nav .navbar-links ul {
+      list-style: none;
+      display: flex;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    nav .navbar-links ul li {
+      margin: 0 10px;
+    }
+
+    nav .navbar-links ul li a {
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav .navbar-links ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffb347;
+      transition: width 0.3s ease;
+    }
+
+    nav .navbar-links ul li a:hover {
+      color: #ffb347;
+    }
+
+    nav .navbar-links ul li a:hover::after {
+      width: 80%;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+    .pro {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffb347;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 75, 62, 0.3), 0 0 20px rgba(255, 180, 71, 0.2);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 900px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      animation: floatCard 3s ease-in-out forwards;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 40px #ff4b3e88, 0 0 30px #ffb34788;
+    }
+
+    .card-img-container {
+      flex: 1 1 300px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 12px;
+      animation: jumpGlow 2s ease-out forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card-img-top:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ffb347, 0 0 35px #ff4b3e;
+    }
+
+    .card-body {
+      flex: 2 1 300px;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @keyframes floatCard {
+      0% {
+        transform: translateY(100px) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-10px) scale(1.02);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes jumpGlow {
+      0% {
+        transform: translateY(-120px) scale(0.5);
+        opacity: 0;
+        filter: brightness(1.5) drop-shadow(0 0 10px #ff4b3e);
+      }
+      30% {
+        transform: translateY(20px) scale(1.1);
+      }
+      50% {
+        transform: translateY(-10px) scale(0.95);
+      }
+      70% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        filter: brightness(1) drop-shadow(0 0 15px #ffb347);
+      }
+    }
+
+    /* Fancy Learn More Button */
+    .learn-more-btn {
+      position: relative;
+      display: inline-block;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      border: 2px solid #ffb347;
+      background-color: transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: floatButton 3s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .learn-more-btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .learn-more-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #ffb347, #ff4b3e);
+      transition: all 0.4s ease;
+      z-index: 1;
+      opacity: 0.2;
+    }
+
+    .learn-more-btn:hover::before {
+      left: 0;
+      opacity: 1;
+    }
+
+    .learn-more-btn:hover {
+      color: #000;
+      box-shadow: 0 4px 15px rgba(255, 180, 71, 0.4);
+    }
+
+    @keyframes floatButton {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Cursor Effects */
+    #custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #ff4500 0%, #ffdd00 60%, transparent 100%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition: transform 0.05s ease;
+      box-shadow: 0 0 6px #ff4500, 0 0 12px #ffdd00;
+    }
+
+    .glitter, .fire-cursor-spark {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .glitter {
+      background: #fff;
+      box-shadow: 0 0 8px #ff4b3e, 0 0 16px #ffb347;
+      animation: glitterFade 0.7s ease-out forwards;
+    }
+
+    .fire-cursor-spark {
+      background: radial-gradient(circle, #ffdd00 0%, #ff4500 60%, transparent 100%);
+      animation: fireTrail 0.8s ease-out forwards;
+      opacity: 0.9;
+    }
+
+    @keyframes fireTrail {
+      0% { transform: scale(1) translateY(0); opacity: 1; }
+      50% { transform: scale(1.3) translateY(-10px); opacity: 0.7; }
+      100% { transform: scale(0.6) translateY(-20px); opacity: 0; }
+    }
+
+    @keyframes glitterFade {
+      to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.5);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="custom-cursor"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Project Section -->
+  <div class="container">
+    <h2 class="pro">Projects</h2>
+    <div class="card">
+      <div class="card-img-container">
+        <img src="./assets/images/line.jpg" alt="Line Follower Robot" class="card-img-top" id="animated-img">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Line Follower Robot</h5>
+        <p class="card-text">
+          Developed an autonomous line-following robot capable of detecting and following a black line on a white surface using sensors and the LM923D module. The robot utilized an Arduino microcontroller to process sensor data and adjust the motor control to stay on the track.
+        </p>
+        <a href="https://www.elprocus.com/line-follower-robot-basics-controlling/" class="btn learn-more-btn" target="_blank">
+          <span>Learn More</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor Trail Script -->
+  <script>
+    const customCursor = document.getElementById("custom-cursor");
+    document.addEventListener("mousemove", (e) => {
+      customCursor.style.left = `${e.clientX}px`;
+      customCursor.style.top = `${e.clientY}px`;
+
+      const glitter = document.createElement('div');
+      glitter.className = 'glitter';
+      glitter.style.left = `${e.clientX}px`;
+      glitter.style.top = `${e.clientY}px`;
+      document.body.appendChild(glitter);
+      setTimeout(() => glitter.remove(), 700);
+
+      const fireSpark = document.createElement('div');
+      fireSpark.className = 'fire-cursor-spark';
+      fireSpark.style.left = `${e.clientX}px`;
+      fireSpark.style.top = `${e.clientY}px`;
+      document.body.appendChild(fireSpark);
+      setTimeout(() => fireSpark.remove(), 800);
+    });
+  </script>
+</body>
+</html>

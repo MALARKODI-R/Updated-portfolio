@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assignment Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Navigation Header */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #111;
+      box-shadow: 0 4px 12px rgba(255, 179, 71, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffb347;
+    }
+
+    nav .navbar-links ul {
+      list-style: none;
+      display: flex;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    nav .navbar-links ul li {
+      margin: 0 10px;
+    }
+
+    nav .navbar-links ul li a {
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav .navbar-links ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffb347;
+      transition: width 0.3s ease;
+    }
+
+    nav .navbar-links ul li a:hover {
+      color: #ffb347;
+    }
+
+    nav .navbar-links ul li a:hover::after {
+      width: 80%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: #ffdd00;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px;
+      padding: 60px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .subject-btn {
+      padding: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: transparent;
+      border: 3px solid;
+      border-image: linear-gradient(to right, #ff4b3e, #ffb347) 1;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: bounceIn 1s ease forwards;
+    }
+
+    .subject-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #ff4b3e, #ffb347);
+      z-index: -1;
+      transition: left 0.4s ease;
+    }
+
+    .subject-btn:hover::before {
+      left: 0;
+    }
+
+    .subject-btn:hover {
+      color: #000;
+      background-color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 75, 62, 0.5);
+    }
+
+    .container .subject-btn:nth-child(1) { animation-delay: 0.2s; }
+    .container .subject-btn:nth-child(2) { animation-delay: 0.4s; }
+    .container .subject-btn:nth-child(3) { animation-delay: 0.6s; }
+    .container .subject-btn:nth-child(4) { animation-delay: 0.8s; }
+    .container .subject-btn:nth-child(5) { animation-delay: 1s; }
+    .container .subject-btn:nth-child(6) { animation-delay: 1.2s; }
+
+    @keyframes bounceIn {
+      0% { transform: translateY(-100px) scale(0.8); opacity: 0; }
+      60% { transform: translateY(20px) scale(1.05); opacity: 1; }
+      80% { transform: translateY(-10px) scale(0.97); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    .fire-burst {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #ffdd00 0%, #ff4500 70%, transparent 100%);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+      animation: fireExplode 0.6s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fireExplode {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* Custom cursor */
+    #custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #ff4500 0%, #ffdd00 60%, transparent 100%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition: transform 0.05s ease;
+      box-shadow: 0 0 6px #ff4500, 0 0 12px #ffdd00;
+    }
+
+    .fire-cursor-spark {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffdd00 0%, #ff4500 60%, transparent 100%);
+      pointer-events: none;
+      animation: fireTrail 0.8s ease-out forwards;
+      z-index: 9999;
+      opacity: 0.9;
+    }
+
+    @keyframes fireTrail {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.7; }
+      100% { transform: scale(0.6); opacity: 0; }
+    }
+
+    .glitter {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      box-shadow: 0 0 8px #ff4b3e, 0 0 16px #ff4b3e;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: glitterFade 0.7s ease-out forwards;
+    }
+
+    @keyframes glitterFade {
+      to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Navigation Header -->
+  <nav>
+    <div class="logo">MALARKODI R</div>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills.html">Skills & Achievement</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="protosem.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Title -->
+  <h1>Semester VI (PROTOSEM STREAM)</h1>
+
+  <!-- Subject Buttons -->
+  <div class="container">
+    <div class="subject-btn">Computational Hardware</div>
+    <a href="coding_ass.html" target="_blank">
+      <div class="subject-btn">Coding for Innovators</div>
+    </a>    
+    <a href="industrial.html" target="_blank">
+      <div class="subject-btn">Industrial automation</div>
+    </a>
+    <div class="subject-btn">Applied Design Thinking</div>
+    <div class="subject-btn">Startup Fundamentals</div>
+    <div class="subject-btn">Prototype Development</div>
+  </div>
+
+  <!-- Script for Cursor Effects and Fire Burst -->
+  <script>
+    const customCursor = document.getElementById("custom-cursor");
+
+    document.addEventListener("mousemove", (e) => {
+      customCursor.style.left = `${e.clientX}px`;
+      customCursor.style.top = `${e.clientY}px`;
+
+      const glitter = document.createElement("div");
+      glitter.className = "glitter";
+      glitter.style.left = `${e.clientX}px`;
+      glitter.style.top = `${e.clientY}px`;
+      document.body.appendChild(glitter);
+      setTimeout(() => glitter.remove(), 700);
+
+      const spark = document.createElement("div");
+      spark.className = "fire-cursor-spark";
+      spark.style.left = `${e.clientX}px`;
+      spark.style.top = `${e.clientY}px`;
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 800);
+    });
+
+    window.addEventListener("load", () => {
+      document.querySelectorAll(".subject-btn").forEach((btn, i) => {
+        setTimeout(() => {
+          const rect = btn.getBoundingClientRect();
+          const fire = document.createElement("div");
+          fire.className = "fire-burst";
+          fire.style.left = `${rect.left + rect.width / 2}px`;
+          fire.style.top = `${rect.top + rect.height}px`;
+          document.body.appendChild(fire);
+          setTimeout(() => fire.remove(), 600);
+        }, 1000 + i * 250);
+      });
+    });
+  </script>
+
+</body>
+</html>

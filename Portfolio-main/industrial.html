@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assignments - Coding for Innovators</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      background: linear-gradient(to right, #0c0c0c, #050505);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      border-bottom: 2px solid #333;
+    }
+
+    .navbar-brand {
+      color: #00ffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar-links ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar-links ul li a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links ul li a:hover {
+      color: #00ffff;
+    }
+
+    /* Main Section */
+    .tec {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .tec h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #00ffff;
+    }
+
+    .as1 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    /* Glowing Button Styles */
+    .glow-btn {
+      background: transparent;
+      color: #00ffff;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, #00ffff, transparent);
+      transition: all 0.5s ease;
+    }
+
+    .glow-btn:hover::before {
+      left: 125%;
+    }
+
+    .glow-btn:hover {
+      color: #111;
+      background-color: #00ffff;
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    }
+
+    /* Cursor Effects */
+    .cursor {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 10000;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: trailFade 1s forwards;
+    }
+
+    @keyframes trailFade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="tec">
+    <h2>Assignments</h2>
+    <div class="as1">
+      <a href="Laser cutting.html" target="_blank" class="glow-btn">Laser Cutting</a>
+      <a href="Robotic arm.html" target="_blank" class="glow-btn">Robotic Arm</a>
+    </div>
+  </div>
+
+  <!-- CURSOR SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cursor = document.querySelector('.cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Malarkodi R</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid red;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      mix-blend-mode: difference;
+    }
+
+    /* Fire Spark Trail */
+    .spark {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: orange;
+      box-shadow: 0 0 10px red;
+      pointer-events: none;
+      animation: spark-fade 0.5s forwards;
+    }
+
+    @keyframes spark-fade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* Glitter Trail */
+    .glitter {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 5px cyan;
+      animation: glitter-fade 0.8s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes glitter-fade {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.5); opacity: 0; }
+    }
+
+    /* Basic reset and dark theme background */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Header/Nav styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  letter-spacing: 1px;
+}
+
+.nav-links a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff6b6b;
+}
+
+/* Glitter cursor styles */
+.cursor-dot,
+.cursor-trail {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+
+.cursor-trail {
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 9998;
+  transition: transform 0.1s ease-out;
+}
+
+
+    /* Contact Section */
+    #contact {
+      padding: 80px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .con h2 {
+      font-size: 2.5em;
+      color: gold;
+      text-align: center;
+      text-shadow: 0 0 15px orange;
+      animation: typewriter 4s steps(30, end) 1s 1 normal both;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 4px solid orange;
+      width: fit-content;
+      margin: auto;
+    }
+
+    @keyframes typewriter {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px orange;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      background-color: #1a1a1a;
+      color: white;
+    }
+
+    .submit-btn {
+      background-color: orange;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      animation: bounce 2s ease infinite;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 0 10px red;
+      background: firebrick;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="con">
+      <h2 class="text-center">Contact Me</h2>
+
+      <div class="contact-form">
+        <form action="" class="form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input" placeholder="Enter Your Name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="input" placeholder="Enter Your Email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="input" rows="5" placeholder="Enter Your Message" required></textarea>
+          </div>
+
+          <input type="submit" value="Submit" class="submit-btn" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spark + Glitter + Cursor Script -->
+  <script>
+    const cursor = document.getElementById('cursor');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.left = `${e.pageX}px`;
+      spark.style.top = `${e.pageY}px`;
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 500);
+
+      const glitter = document.createElement('div');
+      glitter.className = 'glitter';
+      glitter.style.left = `${e.pageX}px`;
+      glitter.style.top = `${e.pageY}px`;
+      document.body.appendChild(glitter);
+      setTimeout(() => glitter.remove(), 800);
+    });
+  </script>
+</body>
+</html>

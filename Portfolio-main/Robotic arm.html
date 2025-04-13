@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robotic Arm Assignment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    body {
+      background: linear-gradient(to right, #0c0c0c, #050505);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    /* Show default cursor on video controls */
+    video {
+      cursor: default;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      border-bottom: 2px solid #333;
+    }
+
+    .navbar-brand {
+      color: #00ffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar-links ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .navbar-links ul li a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links ul li a:hover {
+      color: #00ffff;
+    }
+
+    /* Main Content */
+    .robotic-arm {
+      padding: 40px 10%;
+    }
+
+    h1, h2 {
+      color: #00ffff;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    h3 {
+      color: #1fe2e2;
+      margin-top: 25px;
+    }
+
+    h4 {
+      font-weight: 400;
+      line-height: 1.6;
+      color: #d0f9ff;
+    }
+
+    .robotic-arm img {
+      display: block;
+      margin: 30px auto;
+      max-width: 50%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Cursor */
+    .cursor {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 10000;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      animation: trailFade 1s forwards;
+    }
+
+    @keyframes trailFade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">MALARKODI R</a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skills and achievement.html">Skills & Achievement</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="ass.html">Protosem 3.3</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+  <!-- Main Robotic Arm Content -->
+  <div class="robotic-arm">
+    <h1>Robotic Arm Assignment</h1>
+
+    <h2>Introduction</h2>
+    <h4>This assignment involves the design of a robotic arm using advanced mechanical techniques...</h4>
+
+    <h2>Step-by-Step Guide to Creating the Robotic Arm</h2>
+    <h3>1. Start with a Base Plate</h3>
+    <h4>Create the base of the robotic arm in Fusion 360...</h4>
+
+    <h3>2. Design the Arm Segments</h3>
+    <h4>Sketch and extrude the arm parts...</h4>
+
+    <h3>3. Add Joints and Actuators</h3>
+    <h4>Define the pivot points and attach actuators...</h4>
+
+    <h3>4. Assemble the Robotic Arm</h3>
+    <h4>Using assembly constraints, assemble the arm...</h4>
+
+    <h3>5. Testing and Simulation</h3>
+    <h4>Simulate the movement of the robotic arm...</h4>
+
+    <h2>Challenges and Solutions</h2>
+    <h3>Misalignment of Joints</h3>
+    <h4>Use constraints and precise measurements...</h4>
+
+    <h3>Robotic Arm Video</h3>
+    <video width="100%" controls>
+      <source src="/assets/images/ARM.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Cursor Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cursor = document.querySelector('.cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+          trail.remove();
+        }, 500);
+      });
+    });
+  </script>
+
+</body>
+</html>
